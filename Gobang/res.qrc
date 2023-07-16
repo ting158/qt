@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/icon.png</file>
+        <file>res/qipan.png</file>
+        <file>res/black.png</file>
+        <file>res/white.png</file>
+        <file>res/blackWin.png</file>
+        <file>res/whiteWin.png</file>
+        <file>res/background.png</file>
+        <file>res/restart.png</file>
+    </qresource>
+</RCC>

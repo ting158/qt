@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/body.png</file>
+        <file>res/downHead.png</file>
+        <file>res/food.png</file>
+        <file>res/leftHead.png</file>
+        <file>res/restart.png</file>
+        <file>res/rightHead.png</file>
+        <file>res/start.png</file>
+        <file>res/stop.png</file>
+        <file>res/upHead.png</file>
+        <file>res/icon.jpg</file>
+    </qresource>
+</RCC>
