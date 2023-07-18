@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QByteArray>
 #include <QFile>
+#include <QTextCodec>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -48,13 +49,21 @@ MainWindow::MainWindow(QWidget *parent)
 
     });
 
-    //按钮，中文路径打开
-    //Qt6可以直接打开，新版本已经将QTextCodec移除，取而代之的是QStringConverter和QByteArrayConverter
-    connect(ui->btn_openForChinese, &QPushButton::clicked, this, [=](){
-        QFile filename("E:\\桌面\\测试\\测试.txt");
-        filename.open(QIODevice::ReadOnly);
-        QByteArray array = filename.readAll();
-        ui->lineEdit_openChinese->setText(array);
+    //按钮，打开gbk编码的文本
+    connect(ui->btn_openGBKtxt, &QPushButton::clicked, this, [=](){
+        //直接打开会乱码
+//        QFile filename("E:\\Qt Creator\\train\\01_File\\gbk.txt");
+//        filename.open(QIODevice::ReadOnly);
+//        QByteArray array = filename.readAll();
+//        ui->lineEdit_openChinese->setText(array);
+
+        //使用QTextCodec处理
+        QFile filename("E:\\Qt Creator\\train\\01_File\\gbk.txt");
+        filename.open(QIODeviceBase::ReadOnly);
+        QTextCodec *codec = QTextCodec::codecForName("GBK");
+        QString str = codec->toUnicode(filename.readAll());
+        ui->lineEdit_openGBKtxt->setText(str);
+
     });
 
 }
