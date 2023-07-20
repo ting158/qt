@@ -1,1 +1,1 @@
-Qt Creator是跨平台的集成开发环境（IDE），旨在为开发者带来最好的体验。 Qt Creator可在Windows、Linux和macOS桌面操作系统上运行，并允许开发人员在桌面、移动和嵌入式平台创建应用程序。
+Qt Creator是跨平台的集成开发环境（IDE），旨在为开发者带来最好的体验。 Qt Creator可在Windows、Linux和macOS桌面操作系统上运行，并允许开发人员在桌面、移动和嵌入式平台创建应用程序。11111
