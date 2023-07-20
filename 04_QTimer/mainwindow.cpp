@@ -11,10 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_a = 0;
 
-    QTimer *m_timer;
     m_timer = new QTimer;
     connect(m_timer, SIGNAL(timeout()), this, SLOT(OnTimer()));
-    m_timer->start(500);
 
 }
 
@@ -26,13 +24,11 @@ MainWindow::~MainWindow()
 void MainWindow::OnTimer()
 {
     ui->lineEdit->setText(QString::number(m_a++));
-
-    qDebug() << m_a;
 }
 
 
 void MainWindow::on_pushButton_clicked()
 {
-    emit timeout();
+    m_timer->start(500);
 }
 

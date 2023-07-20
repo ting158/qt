@@ -16,12 +16,9 @@ public:
     ~MainWindow();
 
 
-
+    QTimer *m_timer;
 
     int m_a;
-
-signals:
-    void timeout();
 
 public slots:
     void OnTimer();
