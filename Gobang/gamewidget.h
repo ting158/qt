@@ -46,6 +46,7 @@ public:
     QPainter m_painter;
     int m_x, m_y;   //棋盘左上角坐标
     int m_w;   //棋盘格子的宽度
+    int m_num;
     int m_chess[15][15];  //记录棋子，0-->无，-1-->黑，1-->白
     bool m_playFlag;   //黑白棋标志，true为白棋，false为黑棋
     QPoint m_index;   //鼠标点击的棋盘坐标

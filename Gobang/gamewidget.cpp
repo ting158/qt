@@ -16,6 +16,7 @@ GameWidget::GameWidget(QWidget *parent)
     m_x = 22;
     m_y = 22;
     m_w = 40;
+    m_num = 15;
 
     initChess();
 
@@ -27,14 +28,10 @@ GameWidget::GameWidget(QWidget *parent)
 
     //gameover窗口监听结束信号
     connect(m_gameover, &GameOverWidget::SandGameOver, this, [=](){
-
-        //延时进入游戏结束窗口
-        QTimer::singleShot(300, this, [=](){
-            m_gameover->setWindowTitle(QString("游戏结束"));
-            m_gameover->setWindowIcon(QIcon(QPixmap(":/res/icon.png")));
-            m_gameover->resize(535, 100);
-            m_gameover->show();
-        });
+        m_gameover->setWindowTitle(QString("游戏结束"));
+        m_gameover->setWindowIcon(QIcon(QPixmap(":/res/icon.png")));
+        m_gameover->resize(535, 100);
+        m_gameover->show();
     });
 
     //重新开始按钮
@@ -90,15 +87,15 @@ void GameWidget::initChess()
             m_chess[i][j] = 0;
         }
     }
+    m_playFlag = true;
 }
 
 QPoint GameWidget::ConvertMousePressToIndex(QPoint p)
 {
     QPoint index;
 
-    //能够纠正15像素半径的误差
-    index.setX((p.x() - m_x + 15) / m_w);
-    index.setY((p.y() - m_y + 15) / m_w);
+    index.setX((p.x() - m_x + m_w / 2) / m_w);
+    index.setY((p.y() - m_y + m_w / 2) / m_w);
 
     return index;
 }
@@ -189,52 +186,76 @@ int GameWidget::isWin()
         color = -1;        //判断黑棋
 
     //上下方向
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x() - i][m_index.y()] == color)
             up++;
         else
             break;
     }
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x() + i][m_index.y()] == color)
             down++;
         else
             break;
     }
     //左右方向
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x()][m_index.y() - i] == color)
             left++;
         else
             break;
     }
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x()][m_index.y() + i] == color)
             right++;
         else
             break;
     }
     //左上右下方向
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x() - i][m_index.y() - i] == color)
             leftup++;
         else
             break;
     }
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x() + i][m_index.y() + i] == color)
             rightdown++;
         else
             break;
     }
     //左下右上方向
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x() + i][m_index.y() - i] == color)
             leftdown++;
         else
             break;
     }
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i < 5; i++)
+    {
+        if (m_index.x() - i < 0 && m_index.x() - i >= m_num)
+            break;
         if (m_chess[m_index.x() - i][m_index.y() + i] == color)
             rightup++;
         else
@@ -255,14 +276,8 @@ void GameWidget::GameOver()
 {
     m_gameover->m_winner = this->m_winner;
 
-    if (m_winner == 1)
+    if (m_winner == 1 || m_winner == -1)
     {
-        qDebug() << "白棋胜利";
-        emit m_gameover->SandGameOver();
-    }
-    else if (m_winner == -1)
-    {
-        qDebug() << "黑棋胜利";
         emit m_gameover->SandGameOver();
     }
 }
