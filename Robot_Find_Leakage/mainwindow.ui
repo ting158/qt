@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>902</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>902</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>粒子</string>
+    </property>
+    <addaction name="actionShow_LiZi"/>
+    <addaction name="actionhideLiZi"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>运动</string>
+    </property>
+    <addaction name="actionmoveStart"/>
+    <addaction name="actionmoveStop"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>泄露</string>
+    </property>
+    <addaction name="actionleakgge_Start"/>
+    <addaction name="actionleakage_Stop"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>小车运动模式</string>
+    </property>
+    <addaction name="actionShunYi"/>
+    <addaction name="actionYunSu"/>
+    <addaction name="actionZhuanQuan"/>
+    <addaction name="actionLuJing"/>
+    <addaction name="actionFindXieLou"/>
+    <addaction name="actionStop"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionShow_LiZi">
+   <property name="text">
+    <string>显示</string>
+   </property>
+  </action>
+  <action name="actionhideLiZi">
+   <property name="text">
+    <string>隐藏</string>
+   </property>
+  </action>
+  <action name="actionmoveStart">
+   <property name="text">
+    <string>开始</string>
+   </property>
+  </action>
+  <action name="actionmoveStop">
+   <property name="text">
+    <string>停止</string>
+   </property>
+  </action>
+  <action name="actionleakgge_Start">
+   <property name="text">
+    <string>开始</string>
+   </property>
+  </action>
+  <action name="actionleakage_Stop">
+   <property name="text">
+    <string>停止</string>
+   </property>
+  </action>
+  <action name="actionShunYi">
+   <property name="text">
+    <string>瞬移</string>
+   </property>
+  </action>
+  <action name="actionYunSu">
+   <property name="text">
+    <string>匀速</string>
+   </property>
+  </action>
+  <action name="actionZhuanQuan">
+   <property name="text">
+    <string>转圈</string>
+   </property>
+  </action>
+  <action name="actionLuJing">
+   <property name="text">
+    <string>路径规划</string>
+   </property>
+  </action>
+  <action name="actionFindXieLou">
+   <property name="text">
+    <string>查找泄漏点</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>静止</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
