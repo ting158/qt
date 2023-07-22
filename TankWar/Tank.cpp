@@ -417,7 +417,8 @@ bool CTank::BlockHitTank()
         if (tri.containsPoint(topLeft, Qt::OddEvenFill) ||
             tri.containsPoint(topRight, Qt::OddEvenFill) ||
             tri.containsPoint(bottomLeft, Qt::OddEvenFill) ||
-            tri.containsPoint(bottomRight, Qt::OddEvenFill)) {
+            tri.containsPoint(bottomRight, Qt::OddEvenFill))
+        {
             //如果三角形包含矩形的任意一个顶点，则认为三角形和矩形相交
             return true;
         }
@@ -426,7 +427,7 @@ bool CTank::BlockHitTank()
     return false;
 }
 
-//初始化坦克、方块、得分，为了写重新开始按钮
+//初始化坦克、方块、得分
 void CTank::InitGame()
 {
 	m_Score = 0;

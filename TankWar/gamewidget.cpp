@@ -28,6 +28,8 @@ void GameWidget::paintEvent(QPaintEvent *event)
 {
     m_painter->begin(this);
 
+    m_painter->setRenderHint(QPainter::Antialiasing);  //抗锯齿
+
     m_tank.Draw(m_painter);
 
     m_painter->end();
