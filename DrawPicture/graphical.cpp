@@ -7,6 +7,7 @@ Graphical::Graphical()
     m_graphicalType = CIRCLE;
     m_modeType = DRAW;
     m_optCurrent = "无操作";
+    m_indexChoose = -1;
 }
 
 void Graphical::Draw(QPainter *p)
@@ -22,7 +23,7 @@ void Graphical::Draw(QPainter *p)
 
 void Graphical::DrawCircle()
 {
-    int x, y, r;
+    int x, y, r, i = 0;
     QVector<SCircle>::iterator iter;
 
     for (iter = m_cir.begin(); iter != m_cir.end(); iter++)
@@ -30,13 +31,24 @@ void Graphical::DrawCircle()
         x = iter->x;
         y = iter->y;
         r = iter->r;
+
+        if (i == m_indexChoose && m_modeType == MOVE && m_moveGraType == CIRCLE)
+        {
+            m_painter->setPen(QPen(Qt::black, 3));
+        }
+        else
+        {
+            m_painter->setPen(QPen(Qt::black, 1));
+        }
+
         m_painter->drawEllipse(QPoint(x, y), r, r);
+        i++;
     }
 }
 
 void Graphical::DrawRectangle()
 {
-    int x, y, w, h;
+    int x, y, w, h, i = 0;
     QVector<SRectangle>::iterator iter;
 
     for (iter = m_rec.begin(); iter != m_rec.end(); iter++)
@@ -45,7 +57,18 @@ void Graphical::DrawRectangle()
         y = iter->y;
         w = iter->w;
         h = iter->h;
+
+        if (i == m_indexChoose && m_modeType == MOVE && m_moveGraType == RECTANGLE)
+        {
+            m_painter->setPen(QPen(Qt::black, 3));
+        }
+        else
+        {
+            m_painter->setPen(QPen(Qt::black, 1));
+        }
+
         m_painter->drawRect(x, y, w, h);
+        i++;
     }
 }
 
